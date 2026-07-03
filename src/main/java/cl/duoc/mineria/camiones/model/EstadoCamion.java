@@ -5,5 +5,6 @@ public enum EstadoCamion {
     ASIGNADO,
     CARGANDO,
     EN_TRANSITO,
-    FUERA_DE_SERVICIO
+    FUERA_DE_SERVICIO,
+    DESCARGANDO
 }

@@ -10,6 +10,8 @@ import cl.duoc.mineria.camiones.model.RegistrarCamionDTO;
 import cl.duoc.mineria.camiones.repository.CamionRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CamionService {
 
+    private static final Logger logger = LoggerFactory.getLogger(CamionService.class);
     private final CamionRepository camionRepository;
     private final CamionMapper camionMapper;
 
@@ -47,6 +50,7 @@ public class CamionService {
 
     @Transactional
     public Camion actualizarEstado(Long id, ActualizarEstadoCamionDTO dto) {
+        logger.info("Recibida solicitud para actualizar estado del camión ID {}: {}", id, dto);
         Camion camion = obtenerPorId(id);
         camion.setEstadoCamion(dto.getEstadoCamion());
         return camionRepository.save(camion);
